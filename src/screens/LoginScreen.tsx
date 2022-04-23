@@ -84,9 +84,9 @@ const LoginScreen = () => {
                     />
                 </View>}
                 <Image
-                    source={require('../assets/lente.png')}
+                    source={require('../assets/burbujas.png')}
                     resizeMode="contain"
-                    style={styles.logo}
+                    style={styles.logoHome}
                 />
 
                 <View style={styles.inputContainer}>
@@ -128,25 +128,31 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.buttonContainer} >
+                <View style={styles.buttonAccessContainer} >
+                                         
                     <TouchableOpacity
                         onPress={guestLogin}
                         style={[styles.buttonRole, styles.buttonOutlineRole]}
-                    >
+                        >
                         <Text style={styles.buttonOutlineTextRole}>Invitado</Text>
                     </TouchableOpacity>
+                     
+
                     <TouchableOpacity
                         onPress={adminLogin}
                         style={[styles.buttonRole, styles.buttonOutlineRole]}
-                    >
-                        <Text style={styles.buttonOutlineTextRole}>Administrador</Text>
+                        >
+                        <Text style={styles.buttonOutlineTextRole}>Admin</Text>
                     </TouchableOpacity>
+                  
+
                     <TouchableOpacity
                         onPress={supplierLogin}
                         style={[styles.buttonRole, styles.buttonOutlineRole]}
-                    >
-                        <Text style={styles.buttonOutlineTextRole}>Proveedores</Text>
+                        >
+                        <Text style={styles.buttonOutlineTextRole}>Usuario</Text>
                     </TouchableOpacity>   
+                      
                 </View>                
             </View>        
     );

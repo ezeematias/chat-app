@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
 
-const primaryColor = '#f0f0f0';
-const secondaryColor = '#ea5051';
-const tertiaryColor = '#a6c2d6';
-const fourthColor = '#232e5c';
-const buttonBorderRadius = 100;
+const primaryColor = '#000000';
+const secondaryColor = '#3770b6';
+const tertiaryColor = '#a5d1f1';
+const fourthColor = '#ffffff';
+const buttonBorderRadius = 8;
 
 export default StyleSheet.create({
 
@@ -16,7 +16,8 @@ export default StyleSheet.create({
     },
     logo: {
         width: '100%',
-        height: '30%',
+        height: '50%',
+        marginBottom: '50%',
     },
     logoHome: {
         width: '100%',
@@ -28,12 +29,10 @@ export default StyleSheet.create({
         marginTop: 10,
     },
     input: {
-        backgroundColor: primaryColor,
+        backgroundColor: tertiaryColor,
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: buttonBorderRadius,
-        borderBottomColor: fourthColor,
-        borderBottomWidth: 2,
         marginTop: '5%',
     },
     buttonContainer: {
@@ -42,19 +41,27 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginTop: '5%',
     },
+    buttonAccessContainer: {
+        flexDirection: 'row',
+        width: '25%',
+        justifyContent: 'center',
+        alignItems: 'center',  
+        marginTop: '10%', 
+    },
     button: {
-        backgroundColor: fourthColor,
+        backgroundColor: secondaryColor,
         width: '100%',
         padding: 10,
         borderRadius: buttonBorderRadius,
         alignItems: 'center',
     },
     buttonRole: {
-        backgroundColor: secondaryColor,
+        backgroundColor: tertiaryColor,
         width: '100%',
         padding: 5,
         borderRadius: buttonBorderRadius,
         alignItems: 'center',
+        margin: '5%',
     },
     buttonError: {
         backgroundColor: secondaryColor,
@@ -64,10 +71,8 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     buttonOutline: {
-        backgroundColor: primaryColor,
-        marginTop: 5,
-        borderColor: fourthColor,
-        borderWidth: 2,
+        backgroundColor: tertiaryColor,
+        marginTop: 5, 
     },
     buttonOutlineRole: {
         backgroundColor: secondaryColor,
@@ -76,12 +81,12 @@ export default StyleSheet.create({
         borderWidth: 2,
     },
     buttonText: {
-        color: primaryColor,
+        color: tertiaryColor,
         fontWeight: '700',
         fontSize: 16,
     },
     buttonOutlineText: {
-        color: fourthColor,
+        color: secondaryColor,
         fontWeight: '700',
         fontSize: 16,
     },

@@ -32,7 +32,7 @@ const HomeScreen = () => {
                 </TouchableOpacity>
             </View>                       
             <Image 
-                source={require('../assets/lente.png')}
+                source={require('../assets/burbujas.png')}
                 resizeMode="contain"                 
                 style={styles.logoHome} 
             />    
