@@ -52,14 +52,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#000',
     alignItems: 'center',
     justifyContent: 'center',
   },
   splash: {    
-    backgroundColor: '#fff',
-    height: '100%',
-    width: '100%',
+    backgroundColor: '#000',
+    
   },
 });
 
