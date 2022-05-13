@@ -114,6 +114,11 @@ export default StyleSheet.create({
         marginTop: 40, 
         color: secondaryColor,
         fontWeight: 'bold',        
+    },    
+    textUser:{
+        fontSize: 20,  
+        color: tertiaryColor,
+        fontWeight: 'bold',        
     },
     textDescription:{
         fontSize: 20,
