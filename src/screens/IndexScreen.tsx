@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ImageBackground } from "react-native";
 import styles from "../styles/Style";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -17,7 +17,7 @@ const IndexScreen = () => {
         navigation.replace('Login');
     }
 
-    return (   
+    return (        
         <View style={styles.container}> 
             <Image 
                 source={require('../assets/burbujas.png')}
@@ -40,8 +40,8 @@ const IndexScreen = () => {
                     >
                     <Text style={styles.buttonOutlineText}>Registrarse</Text>
                 </TouchableOpacity>
-            </View>              
-        </View> 
+            </View>             
+        </View>        
          
     );
 }

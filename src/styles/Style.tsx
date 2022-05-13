@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const primaryColor = '#000000';
+const primaryColor = '#5a5a5a';
 const secondaryColor = '#3770b6';
 const tertiaryColor = '#a5d1f1';
 const fourthColor = '#ffffff';
@@ -14,15 +14,32 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    buttonHome: {
+        backgroundColor: fourthColor,
+        width: '100%',
+        height: '45%',
+        padding: 5,
+        borderRadius: buttonBorderRadius,
+        alignItems: 'center',
+        justifyContent: 'center',        
+    },
+        buttonContainerHome: {
+        width: '99%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    back: {
+        flex: 1,
+        justifyContent: 'center',
+    },
     logo: {
         width: '100%',
         height: '50%',
         marginBottom: '50%',
     },
     logoHome: {
-        width: '100%',
-        height: '20%',
-        marginTop: '10%',
+        width: 200,
+        height: 200,       
     },
     inputContainer: {
         width: '80%',
@@ -81,19 +98,26 @@ export default StyleSheet.create({
         borderWidth: 2,
     },
     buttonText: {
-        color: tertiaryColor,
+        color: fourthColor,
         fontWeight: '700',
         fontSize: 16,
     },
     buttonOutlineText: {
-        color: secondaryColor,
+        color: fourthColor,
         fontWeight: '700',
         fontSize: 16,
     },
     buttonOutlineTextRole: {
-        color: primaryColor,
+        color: fourthColor,
         fontWeight: '700',
         fontSize: 16,
+    },
+    buttonOutlineTextRoom: {
+        color: fourthColor,
+        fontWeight: '700',
+        fontSize: 16,
+        height: 350,
+        width: 30,
     },
     spinnerTextStyle: {
         color: 'white',
@@ -118,7 +142,7 @@ export default StyleSheet.create({
     textUser:{
         fontSize: 20,  
         color: tertiaryColor,
-        fontWeight: 'bold',        
+        fontWeight: 'bold',               
     },
     textDescription:{
         fontSize: 20,

@@ -1,28 +1,27 @@
 import { useNavigation } from '@react-navigation/core';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
+import { Text, View, TouchableOpacity, } from 'react-native';
 import { RootStackParamList } from '../../App';
 import { auth, db } from "../database/firebase";
 import styles from '../styles/Style';
 import { FontAwesome } from '@expo/vector-icons';
 import { GiftedChat } from 'react-native-gifted-chat'
-import { addDoc, collection, getDocs, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 
-const ChatRoomScreen = () => {
-
+const ChatRoomBScreen = () => {        
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const [messages, setMessages] = useState([]);
 
     useLayoutEffect(() => {
-        const unsubscribe =  onSnapshot(query(collection(db, "chats"), orderBy("createdAt", "desc")), (snapshot =>            
+        const unsubscribe = onSnapshot(query(collection(db, "chatB"), orderBy("createdAt", "desc")), (snapshot =>
             setMessages(snapshot.docs.map(doc => ({
                 _id: doc.data()._id,
                 text: doc.data().text,
                 createdAt: doc.data().createdAt.toDate(),
                 user: doc.data().user
             })))
-            ))
+        ))
         return unsubscribe;
     }, [])
 
@@ -34,7 +33,7 @@ const ChatRoomScreen = () => {
             createdAt,
             text,
             user } = messages[0]
-        addDoc(collection(db, "chats"), {
+        addDoc(collection(db, "chatB"), {
             _id,
             createdAt,
             text,
@@ -50,38 +49,49 @@ const ChatRoomScreen = () => {
                 </TouchableOpacity>
             ),
             headerLeft: () => (
-                <View>
-                    <Text style={styles.textUser}>{auth?.currentUser?.email}</Text>
-                </View>
+                <TouchableOpacity onPress={handlerBack}>
+                    <FontAwesome name="step-backward" size={24} color="#a5d1f1" />
+                </TouchableOpacity>
             ),
-            headerTitle: () => (
-                <Text></Text>
-            )
+            headerTitle: () => (  
+
+                <Text style={styles.textUser}>{auth?.currentUser?.displayName}</Text>                             
+            ),
+            headerBackVisible: false,
+            headerBackButtonMenuEnabled: false,
+            headerTitleAlign: 'center',
         });
     }, []);
 
     async function handlerSingOut() {
         await auth
             .signOut()
-            .then(() => { navigation.replace('Index') })
+            .then(() => { navigation.navigate('Index') })
             .catch((error: any) => alert(error.message))
     }
+    function handlerBack() {
+        navigation.replace('Home');
+    }
     return (
+        
+            <GiftedChat
+                messagesContainerStyle={{ backgroundColor: '#5a5a5a' }}
+                optionTintColor='#optionTintColor'
+                messages={messages}
+                onSend={messages => onSend(messages)}
+                renderUsernameOnMessage={true}
+                renderAvatarOnTop={true}
+                maxInputLength={21}
+                user={{
+                    _id: auth?.currentUser?.email || 1,
+                    name: auth?.currentUser?.displayName || '',
+                }}
+            />
+       
 
-        <GiftedChat
-            messages={messages}
-            onSend={messages => onSend(messages)}
-            renderUsernameOnMessage={true}
-            renderAvatarOnTop={true}
-            maxInputLength={21}
-            user={{
-                _id: auth?.currentUser?.email || 1,
-                name: auth?.currentUser?.displayName || '',
-            }}
-        />
     );
 }
 
-export default ChatRoomScreen;
+export default ChatRoomBScreen;
 
 

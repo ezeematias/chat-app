@@ -19,7 +19,7 @@ const LoginScreen = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                navigation.replace('Chat');
+                navigation.replace('Home');
             }
         })
         return unsubscribe;
@@ -61,12 +61,12 @@ const LoginScreen = () => {
     }
     
     const adminLogin = () => {
-        setEmail("admin@gmail.com");
+        setEmail("admin@monsters.com");
         setPassword("123456");
     }
     
     const supplierLogin = () => {
-        setEmail("proveedores@gmail.com");
+        setEmail("usuario@monsters.com");
         setPassword("123456");
     }
 
