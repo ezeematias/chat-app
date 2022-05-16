@@ -15,7 +15,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     buttonHome: {
-        backgroundColor: fourthColor,
+        backgroundColor: '#fff',
         width: '100%',
         height: '45%',
         padding: 5,
@@ -139,7 +139,12 @@ export default StyleSheet.create({
         color: secondaryColor,
         fontWeight: 'bold',        
     },    
-    textUser:{
+    textUserA:{
+        fontSize: 20,  
+        color: secondaryColor,
+        fontWeight: 'bold',               
+    },
+    textUserB:{
         fontSize: 20,  
         color: tertiaryColor,
         fontWeight: 'bold',               

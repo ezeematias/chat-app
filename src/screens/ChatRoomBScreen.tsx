@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { Text, View, TouchableOpacity, } from 'react-native';
+import { Text, TouchableOpacity, } from 'react-native';
 import { RootStackParamList } from '../../App';
 import { auth, db } from "../database/firebase";
 import styles from '../styles/Style';
@@ -12,8 +12,8 @@ import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firesto
 const ChatRoomBScreen = () => {        
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
     const [messages, setMessages] = useState([]);
-
-    useLayoutEffect(() => {
+    
+    useLayoutEffect(() => {        
         const unsubscribe = onSnapshot(query(collection(db, "chatB"), orderBy("createdAt", "desc")), (snapshot =>
             setMessages(snapshot.docs.map(doc => ({
                 _id: doc.data()._id,
@@ -55,28 +55,35 @@ const ChatRoomBScreen = () => {
             ),
             headerTitle: () => (  
 
-                <Text style={styles.textUser}>{auth?.currentUser?.displayName}</Text>                             
+                <Text style={styles.textUserB}>{auth?.currentUser?.displayName}</Text>                             
             ),
             headerBackVisible: false,
             headerBackButtonMenuEnabled: false,
             headerTitleAlign: 'center',
+            headerStyle: {
+                backgroundColor: '#3770b6',  
+            }
         });
     }, []);
 
     async function handlerSingOut() {
         await auth
             .signOut()
-            .then(() => { navigation.navigate('Index') })
+            .then(() => { navigation.replace('Index') })
             .catch((error: any) => alert(error.message))
     }
     function handlerBack() {
         navigation.replace('Home');
     }
-    return (
-        
+    return (        
             <GiftedChat
-                messagesContainerStyle={{ backgroundColor: '#5a5a5a' }}
+                messagesContainerStyle={{ backgroundColor: '#3770b6' }}
                 optionTintColor='#optionTintColor'
+                textInputProps={{                      
+                    borderColor: '#222', 
+                    placeholder:"Escribe un mensaje aquí...",                     
+                     }}               
+                
                 messages={messages}
                 onSend={messages => onSend(messages)}
                 renderUsernameOnMessage={true}
@@ -87,8 +94,6 @@ const ChatRoomBScreen = () => {
                     name: auth?.currentUser?.displayName || '',
                 }}
             />
-       
-
     );
 }
 

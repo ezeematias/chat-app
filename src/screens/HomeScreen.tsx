@@ -28,7 +28,7 @@ const HomeScreen = () => {
             <View style={styles.buttonContainer} > 
                 <TouchableOpacity
                     onPress={handlerRoomA}
-                    style={styles.buttonHome}
+                    style={[styles.buttonHome, styles.buttonOutline]}
                 >
                     <Image
                         source={require('../assets/4a.png')}

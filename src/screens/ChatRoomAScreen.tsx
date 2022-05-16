@@ -6,7 +6,7 @@ import { RootStackParamList } from '../../App';
 import { auth, db } from "../database/firebase";
 import styles from '../styles/Style';
 import { FontAwesome } from '@expo/vector-icons';
-import { GiftedChat } from 'react-native-gifted-chat'
+import { Day, GiftedChat, InputToolbar  } from 'react-native-gifted-chat'
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 
 const ChatRoomAScreen = () => {
@@ -45,36 +45,41 @@ const ChatRoomAScreen = () => {
         navigation.setOptions({
             headerRight: () => (
                 <TouchableOpacity onPress={handlerSingOut}>
-                    <FontAwesome name="power-off" size={24} color="#a5d1f1" />
+                    <FontAwesome name="power-off" size={24} color="#3770b6" />
                 </TouchableOpacity>
             ),
             headerLeft: () => (
                 <TouchableOpacity onPress={handlerBack}>
-                    <FontAwesome name="step-backward" size={24} color="#a5d1f1" />
+                    <FontAwesome name="step-backward" size={24} color="#3770b6" />
                 </TouchableOpacity>
             ),
             headerTitle: () => (
 
-                <Text style={styles.textUser}>{auth?.currentUser?.displayName}</Text>
+                <Text style={styles.textUserA}>{auth?.currentUser?.displayName}</Text>
             ),
+            headerTintColor: "#fff",
             headerTitleAlign: 'center',
             headerBackButtonMenuEnabled: false,
+            headerStyle: {
+                backgroundColor: '#a5d1f1',  
+            }
         });
     }, []);
 
     async function handlerSingOut() {
         await auth
             .signOut()
-            .then(() => { navigation.navigate('Index') })
+            .then(() => { navigation.replace('Index') })
             .catch((error: any) => alert(error.message))
     }
     function handlerBack() {
         navigation.replace('Home');
     }
+    
     return (
 
-        <GiftedChat
-            messagesContainerStyle={{ backgroundColor: '#5a5a5a' }}
+        <GiftedChat  
+            messagesContainerStyle={{ backgroundColor: '#a5d1f1', borderColor: '#3770b6', shadowColor: '#3770b6' }}
             optionTintColor='#optionTintColor'
             messages={messages}
             onSend={messages => onSend(messages)}
@@ -85,6 +90,11 @@ const ChatRoomAScreen = () => {
                 _id: auth?.currentUser?.email || 1,
                 name: auth?.currentUser?.displayName || '',
             }}
+            textInputProps={{                      
+                borderColor: '#222', 
+                placeholder:"Escribe un mensaje aquí...",                    
+                
+            }}             
         />
 
 
